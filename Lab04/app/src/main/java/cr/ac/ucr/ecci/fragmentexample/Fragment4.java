@@ -8,17 +8,23 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 public class Fragment4 extends Fragment {
     private final String ARG_PARAM1 = "nameParam";
+    private TextView fragment4Text;
+    private String mensajeFragment1;
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        Bundle bundle = new Bundle();
+        bundle = getArguments();
         super.onCreate(savedInstanceState);
-        if (getArguments() != null){
-            //Escribir código
+        if (bundle != null){
+            mensajeFragment1 = bundle.getString("mensaje");
         }
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_4, container, false);
+        View inf = inflater.inflate(R.layout.fragment_4, container, false);
+        fragment4Text = (TextView) inf.findViewById(R.id.titleFragment4);
+        fragment4Text.setText(mensajeFragment1);
+        return inf;
     }
 }

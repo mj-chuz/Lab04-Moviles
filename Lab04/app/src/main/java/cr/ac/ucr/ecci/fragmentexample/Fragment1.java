@@ -10,13 +10,14 @@ public class Fragment1 extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FragmentManager fragmentManager =
-                getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction =
-                fragmentManager.beginTransaction();
-        //Escribir código para enviar parametro
-        fragmentTransaction.replace(R.id.fragmentContainer, new
-                Fragment4()).commit();
+        Fragment4 fragment = new Fragment4();
+        Bundle bundle = new Bundle();
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        bundle.putString("mensaje","Fragment 4 :)");
+        fragment.setArguments(bundle);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(R.id.fragmentContainer, fragment).commit();
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
